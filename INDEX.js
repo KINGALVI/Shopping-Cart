@@ -5,7 +5,7 @@ function phoneNumberPlusMinus(isIncrease) {
     const minusCurrentPhoneNumber = parseInt(minusPhoneNumberString);
     let newPhoneNumber;
 
-    if (isIncrease) {
+    if (isIncrease === true) {
         newPhoneNumber = minusCurrentPhoneNumber + 1;
     }
     else {
@@ -13,23 +13,66 @@ function phoneNumberPlusMinus(isIncrease) {
     }
 
     const PhoneNumberField = minusPhoneNumberField.value = newPhoneNumber;
-    if (PhoneNumberField < 0) {
+    if (PhoneNumberField < 1) {
         minusPhoneNumberField.value = 0;
     }
 
+    return newPhoneNumber;
+
 }
 
+function phonePricePlusMinus(newPhoneNumber) {
+
+    const phoneNumberElement = document.getElementById('total-phone-price');
+    const totalPhonePrice = newPhoneNumber * 1219;
+    const phoneElement = phoneNumberElement.innerText = totalPhonePrice;
+    if (phoneElement < 0) {
+        phoneNumberElement.innerText = 0;
+    }
+    subTotalTaxPricePlusMinus(totalPhonePrice)
+}
+
+function subTotalTaxPricePlusMinus(totalPhonePrice) {
+    const subTotalPriceElement = document.getElementById('subtotal-price');
+    const subTotalPrice = totalPhonePrice;
+    const SubTotalPrice = subTotalPriceElement.innerText = subTotalPrice;
+    if (SubTotalPrice < 0) {
+        subTotalPriceElement.innerText = 0;
+    }
+
+    const taxMoneyElement = document.getElementById('tax-money');
+    const taxMoneyAmmount = subTotalPrice * 0.05;
+    const taxMoneyString = parseInt(taxMoneyAmmount);
+    const TaxMoney = taxMoneyElement.innerText = taxMoneyString;
+    if(TaxMoney < 0){
+        taxMoneyElement.innerText = 0;
+    }
+
+    const totalPriceElement = document.getElementById('total-price');
+    const totalPrice = subTotalPrice + taxMoneyAmmount;
+    const totalPhoneString = parseInt(totalPrice);
+    const TotalPrice = totalPriceElement.innerText = totalPhoneString;
+    if(TotalPrice < 0){
+        totalPriceElement.innerText = 0;
+    }
+
+
+}
 
 document.getElementById('btn-phone-plus').addEventListener('click', function () {
 
-    phoneNumberPlusMinus(true)
+    const newPhoneNumber = phoneNumberPlusMinus(true);
+
+    phonePricePlusMinus(newPhoneNumber);
 
 })
 
 
 document.getElementById('btn-phone-minus').addEventListener('click', function () {
 
-    phoneNumberPlusMinus(false)
+    const newPhoneNumber = phoneNumberPlusMinus(false);
+
+    phonePricePlusMinus(newPhoneNumber);
 
 })
 
@@ -56,16 +99,31 @@ function caseNumberPlusMinus(isIncrease) {
         minusCaseNumberInputField.value = 0;
     }
 
+    return nweCaseNumber
+
+}
+
+function casePricePlusMinus(newCaseNumber) {
+
+    const caseNumberElement = document.getElementById('total-case-price')
+    const caseNumberPrice = newCaseNumber * 59;
+    const caseElement = caseNumberElement.innerText = caseNumberPrice;
+    if (caseElement < 0) {
+        caseNumberElement.innerText = 0;
+    }
+
 }
 
 document.getElementById('btn-case-plus').addEventListener('click', function () {
 
-    caseNumberPlusMinus(true)
+    const newCaseNumber = caseNumberPlusMinus(true);
+    casePricePlusMinus(newCaseNumber);
 
 })
 
 document.getElementById('btn-case-minus').addEventListener('click', function () {
 
-    caseNumberPlusMinus(false)
+    const nweCaseNumber = caseNumberPlusMinus(false);
+    casePricePlusMinus(nweCaseNumber);
 
 })
