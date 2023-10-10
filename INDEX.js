@@ -25,38 +25,12 @@ function phonePricePlusMinus(newPhoneNumber) {
 
     const phoneNumberElement = document.getElementById('total-phone-price');
     const totalPhonePrice = newPhoneNumber * 1219;
-    const phoneElement = phoneNumberElement.innerText = totalPhonePrice;
+    const totalPhonePriceString = parseInt(totalPhonePrice)
+    const phoneElement = phoneNumberElement.innerText = totalPhonePriceString;
     if (phoneElement < 0) {
         phoneNumberElement.innerText = 0;
     }
-    subTotalTaxPricePlusMinus(totalPhonePrice)
-}
-
-function subTotalTaxPricePlusMinus(totalPhonePrice) {
-    const subTotalPriceElement = document.getElementById('subtotal-price');
-    const subTotalPrice = totalPhonePrice;
-    const SubTotalPrice = subTotalPriceElement.innerText = subTotalPrice;
-    if (SubTotalPrice < 0) {
-        subTotalPriceElement.innerText = 0;
-    }
-
-    const taxMoneyElement = document.getElementById('tax-money');
-    const taxMoneyAmmount = subTotalPrice * 0.05;
-    const taxMoneyString = parseInt(taxMoneyAmmount);
-    const TaxMoney = taxMoneyElement.innerText = taxMoneyString;
-    if(TaxMoney < 0){
-        taxMoneyElement.innerText = 0;
-    }
-
-    const totalPriceElement = document.getElementById('total-price');
-    const totalPrice = subTotalPrice + taxMoneyAmmount;
-    const totalPhoneString = parseInt(totalPrice);
-    const TotalPrice = totalPriceElement.innerText = totalPhoneString;
-    if(TotalPrice < 0){
-        totalPriceElement.innerText = 0;
-    }
-
-
+    subTotalTaxPricePlusMinus()
 }
 
 document.getElementById('btn-phone-plus').addEventListener('click', function () {
@@ -107,10 +81,13 @@ function casePricePlusMinus(newCaseNumber) {
 
     const caseNumberElement = document.getElementById('total-case-price')
     const caseNumberPrice = newCaseNumber * 59;
-    const caseElement = caseNumberElement.innerText = caseNumberPrice;
+    const caseNumberString = parseInt(caseNumberPrice);
+    const caseElement = caseNumberElement.innerText = caseNumberString;
     if (caseElement < 0) {
         caseNumberElement.innerText = 0;
     }
+
+    subTotalTaxPricePlusMinus()
 
 }
 
@@ -127,3 +104,36 @@ document.getElementById('btn-case-minus').addEventListener('click', function () 
     casePricePlusMinus(nweCaseNumber);
 
 })
+
+
+function subTotalTaxPricePlusMinus() {
+
+    const totalPhonePriceString = parseInt(document.getElementById('total-phone-price').innerText);
+    const caseNumberString = parseInt(document.getElementById('total-case-price').innerText);
+
+
+    const subTotalPriceElement = document.getElementById('subtotal-price');
+    const subTotalPrice = totalPhonePriceString + caseNumberString;
+    const SubTotalPrice = subTotalPriceElement.innerText = subTotalPrice;
+    if (SubTotalPrice < 0) {
+        subTotalPriceElement.innerText = 0;
+    }
+
+    const taxMoneyElement = document.getElementById('tax-money');
+    const taxMoneyAmmount = subTotalPrice * 0.05;
+    const taxMoneyString = parseInt(taxMoneyAmmount);
+    const TaxMoney = taxMoneyElement.innerText = taxMoneyString;
+    if (TaxMoney < 0) {
+        taxMoneyElement.innerText = 0;
+    }
+
+    const totalPriceElement = document.getElementById('total-price');
+    const totalPrice = subTotalPrice + taxMoneyAmmount;
+    const totalPhoneString = parseInt(totalPrice);
+    const TotalPrice = totalPriceElement.innerText = totalPhoneString;
+    if (TotalPrice < 0) {
+        totalPriceElement.innerText = 0;
+    }
+
+
+}
