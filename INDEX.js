@@ -33,6 +33,20 @@ function phonePricePlusMinus(newPhoneNumber) {
     subTotalTaxPricePlusMinus()
 }
 
+
+document.getElementById('remove-phone-price').addEventListener('click', function () {
+
+    const phoneNumberElement = document.getElementById('total-phone-price');
+    phoneNumberElement.innerText = 0;
+
+    const phoneInputFieldZero = document.getElementById('input-phone-field');
+    phoneInputFieldZero.value = 0
+
+    subTotalTaxPricePlusMinus();
+
+});
+
+
 document.getElementById('btn-phone-plus').addEventListener('click', function () {
 
     const newPhoneNumber = phoneNumberPlusMinus(true);
@@ -40,7 +54,6 @@ document.getElementById('btn-phone-plus').addEventListener('click', function () 
     phonePricePlusMinus(newPhoneNumber);
 
 })
-
 
 document.getElementById('btn-phone-minus').addEventListener('click', function () {
 
@@ -91,6 +104,18 @@ function casePricePlusMinus(newCaseNumber) {
 
 }
 
+
+document.getElementById('remove-case-price').addEventListener('click', function () {
+    const minusCaseNumberInputField = document.getElementById('input-case-field');
+    minusCaseNumberInputField.value = 0;
+
+    const caseNumberElement = document.getElementById('total-case-price');
+    caseNumberElement.innerText = 0;
+
+    subTotalTaxPricePlusMinus();
+})
+
+
 document.getElementById('btn-case-plus').addEventListener('click', function () {
 
     const newCaseNumber = caseNumberPlusMinus(true);
@@ -137,3 +162,13 @@ function subTotalTaxPricePlusMinus() {
 
 
 }
+
+
+document.getElementById('closeBothModalsButton').addEventListener('click', function () {
+    const modal1 = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+    const modal2 = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
+  
+    // Close both modals.
+    modal1.hide();
+    modal2.hide();
+  });
