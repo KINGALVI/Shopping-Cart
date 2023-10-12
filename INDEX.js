@@ -44,6 +44,8 @@ document.getElementById('remove-phone-price').addEventListener('click', function
 
     subTotalTaxPricePlusMinus();
 
+    purchaseConfirmationButton();
+
 });
 
 
@@ -117,6 +119,9 @@ document.getElementById('remove-case-price').addEventListener('click', function 
     caseNumberElement.innerText = 0;
 
     subTotalTaxPricePlusMinus();
+
+    purchaseConfirmationButton();
+    
 })
 
 
@@ -228,3 +233,10 @@ function purchaseConfirmationButton() {
         buttonDisabaleOrEnable.setAttribute('disabled', 'true');
     }
 }
+
+
+
+document.getElementById('Confirm-Purchase-btn').addEventListener('click', function () {
+    // Display the second modal
+    $('#secondModal').modal('show');
+});
