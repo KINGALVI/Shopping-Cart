@@ -53,6 +53,8 @@ document.getElementById('btn-phone-plus').addEventListener('click', function () 
 
     phonePricePlusMinus(newPhoneNumber);
 
+    purchaseConfirmationButton()
+
 })
 
 document.getElementById('btn-phone-minus').addEventListener('click', function () {
@@ -60,6 +62,8 @@ document.getElementById('btn-phone-minus').addEventListener('click', function ()
     const newPhoneNumber = phoneNumberPlusMinus(false);
 
     phonePricePlusMinus(newPhoneNumber);
+
+    purchaseConfirmationButton()
 
 })
 
@@ -119,14 +123,20 @@ document.getElementById('remove-case-price').addEventListener('click', function 
 document.getElementById('btn-case-plus').addEventListener('click', function () {
 
     const newCaseNumber = caseNumberPlusMinus(true);
+
     casePricePlusMinus(newCaseNumber);
+
+    purchaseConfirmationButton()
 
 })
 
 document.getElementById('btn-case-minus').addEventListener('click', function () {
 
     const nweCaseNumber = caseNumberPlusMinus(false);
+
     casePricePlusMinus(nweCaseNumber);
+
+    purchaseConfirmationButton()
 
 })
 
@@ -164,11 +174,57 @@ function subTotalTaxPricePlusMinus() {
 }
 
 
-document.getElementById('closeBothModalsButton').addEventListener('click', function () {
-    const modal1 = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
-    const modal2 = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
-  
-    // Close both modals.
-    modal1.hide();
-    modal2.hide();
-  });
+function purchaseConfirmation() {
+
+    const minusPhoneNumberField = document.getElementById('input-phone-field')
+    const minusPhoneNumberString = minusPhoneNumberField.value;
+    const minusCurrentPhoneNumber = parseInt(minusPhoneNumberString);
+    const phoneNumberElement = document.getElementById('total-phone-price').innerText;
+
+    const minusCaseNumberInputField = document.getElementById('input-case-field');
+    const minusCaseNumberString = minusCaseNumberInputField.value;
+    const minusCurrentCaseNumber = parseInt(minusCaseNumberString);
+    const caseNumberElement = document.getElementById('total-case-price').innerText;
+
+    const totalPriceElement = document.getElementById('total-price').innerText;
+
+    const totalPirceView = document.getElementById('modal-body')
+    totalPirceView.innerHTML = '';
+    totalPirceView.innerHTML = `
+
+<div class="d-flex justify-content-center"> 
+<div class="card w-50">
+  <div class="card-body text-center">
+    <p class="card-text">You are about to purchaseing 
+    </br> <hr> </br>
+     <b>${minusCurrentPhoneNumber} iPhone 11 128GB Phone whith the total price of  ${phoneNumberElement}$</b>
+     </br> </br> <hr> </br>
+     <b>${minusCurrentCaseNumber} iPhone 11 Silicone Case whith the total price of  ${caseNumberElement}$</b>
+     </br> <hr> </br>
+     so you have to pay total <b> ${totalPriceElement}$ </b> include tax . Do you want to procide the purchase ?
+     </br> </br>
+     <h5> <b> Please Confirm Your Purchase </b> </h5>
+     </p>
+    </div>
+  </div>
+</div>
+
+`
+}
+
+document.getElementById('cheack-out-button').addEventListener('click', function () {
+    purchaseConfirmation()
+})
+
+
+function purchaseConfirmationButton() {
+    const phoneNumberElement = parseInt(document.getElementById('total-phone-price').innerText);
+    const caseNumberElement = parseInt(document.getElementById('total-case-price').innerText);
+
+    const buttonDisabaleOrEnable = document.getElementById('cheack-out-button');
+    if (phoneNumberElement > 0 || caseNumberElement > 0) {
+        buttonDisabaleOrEnable.removeAttribute('disabled');
+    } else {
+        buttonDisabaleOrEnable.setAttribute('disabled', 'true');
+    }
+}

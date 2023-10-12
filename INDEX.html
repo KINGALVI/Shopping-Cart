@@ -75,11 +75,41 @@
                             </div>
                         </div>
                     </div>
+
+                    <button id="cheack-out-button" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal" disabled>
+                        Check Out
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content d-flex justify-content-center align-items-center">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel"><b>Purchase Confirmation</b></h1>
+
+                                </div>
+                                <div id="modal-body" class="modal-body">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="Confirm-Purchase-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Confirm
+                                        Purchase</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel
+                                        Purchase</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
+
             </div>
         </div>
     </section>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="INDEX.js"></script>
 
