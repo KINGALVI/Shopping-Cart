@@ -1,69 +1,109 @@
+/* Set the background color for the entire page */
 body {
     background: #fff;
 }
 
+/* Styling for the shopping cart section */
 .cart {
     margin: 100px 0;
+    /* Adds vertical spacing */
     background-color: #F6F5FA;
-    ;
+    /* Light gray background */
     padding: 60px 0;
+    /* Adds padding inside the cart section */
 }
 
+/* Styling for the total price section */
 .total-price {
     padding-bottom: 15px;
+    /* Adds bottom spacing */
 }
 
+/* Individual cart item styling */
 .cart-item {
     background-color: #fff;
+    /* White background */
     border-radius: 10px;
+    /* Rounded corners */
     padding: 15px 20px;
+    /* Adds spacing inside the box */
     margin-bottom: 20px;
+    /* Creates spacing between cart items */
 }
 
+/* Center alignment for cart item contents */
 .center-item {
     display: flex;
+    /* Enables flexbox for alignment */
     align-items: center;
+    /* Centers items vertically */
     justify-content: flex-start;
+    /* Aligns items to the left */
 }
 
+/* Set image size for cart items */
 .cart-item img {
     width: 115px;
+    /* Sets image width */
 }
 
+/* Spacing for item descriptions */
 .cart-item h5 {
     padding: 0 45px;
+    /* Adds horizontal spacing */
 }
 
+/* Styling for the remove item icon */
 .cart-item .remove-item {
     width: 25px !important;
+    /* Sets a fixed icon size */
 }
 
+/* Default button styling */
 .btn-default {
     background-color: #fff;
+    /* White background */
 }
 
+/* Styling for the quantity input field */
 .cart-item .form-control {
     background-color: #F6F5FA;
+    /* Light gray background */
     border: none;
+    /* Removes border */
     width: 65px;
+    /* Sets field width */
     border-radius: 10px !important;
+    /* Rounded corners */
     font-weight: 700;
+    /* Bold text */
     font-size: 20px;
+    /* Larger text for better visibility */
 }
 
+/* Adjust input group layout */
 .input-group {
     width: unset;
+    /* Prevents fixed width */
     flex-wrap: nowrap;
+    /* Keeps elements in one line */
 }
 
+/* Aligns text to the right in the price section */
 .status {
     text-align: right;
 }
 
+/* Styling for the checkout button */
 .check-out {
     float: right;
+    /* Positions button to the right */
     padding: 10px 30px;
+    /* Adds padding for better clickability */
     font-size: 19px;
+    /* Sets readable font size */
     background-color: #2FBE70;
+    /* Green color for checkout */
     border: none;
+    /* Removes border */
 }
